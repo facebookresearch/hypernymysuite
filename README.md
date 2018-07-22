@@ -23,9 +23,9 @@ These results can be made machine readable by piping them into `compile_table`:
 
     python main.py cnt --dset hearst_counts.txt.gz | python compile_table.py
 
-To generate the full table from the report, you may simply use `generate_tables.sh`:
+To generate the full table from the report, you may simply use `generate_table.sh`:
 
-    bash generate_tables.sh results.json
+    bash generate_table.sh results.json
 
 Please note that due to licensing concerns, we were not able to release our
 train/validation/test folds from the paper, so results may differ slightly than
