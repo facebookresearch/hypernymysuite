@@ -18,6 +18,7 @@ from scipy.stats import entropy
 
 from .reader import read_sparse_matrix
 from .base import HypernymySuiteModel
+from .base import Precomputed
 
 
 def invCL(x_row, y_row):
