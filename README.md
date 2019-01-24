@@ -77,6 +77,6 @@ If you find this code useful for your research, please cite the following paper:
 
 This code is licensed under [CC-BY-NC4.0](https://creativecommons.org/licenses/by-nc/4.0/).
 
-The data contained in `hearst_patterns.txt` was extracted from a combination of
+The data contained in `hearst_counts.txt` was extracted from a combination of
 [Wikipedia](https://en.wikipedia.org/wiki/Wikipedia:Database_download) and Gigaword.
 Please see publication for details.
