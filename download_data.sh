@@ -154,7 +154,7 @@ fi
 if [ ! -x "$(command -v openssl)" ]
 then
     warning "This script requires the 'openssl' tool. Please run"
-    warning "  brew install unrar"
+    warning "  brew install openssl"
     warning "or whatever your system's equivalent is."
     exit 1
 fi
