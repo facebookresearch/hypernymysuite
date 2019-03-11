@@ -128,7 +128,7 @@ function download_wbless () {
 function download_eval () {
     echo -e 'word1\tword2\tlabel\trelation\tfold'
     curl $CURL_OPTIONS "$VERED_REPO_URL/EVALution.val" "$VERED_REPO_URL/EVALution.test" | \
-        sort | uniq | sed 's/-[jvn]\t/\t/g' | \
+        sed 's/-[jvn]\t/\t/g' | sort | uniq | \
         deterministic_shuffle | \
         awk '{if (NR < 737) {print $0 "\tval"} else {print $0 "\ttest"}}'
 }
