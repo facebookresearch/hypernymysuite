@@ -45,6 +45,16 @@ using pip:
 If you've never used `nltk` before, you'll need to install the wordnet module.
 
     python -c "import nltk; nltk.download('wordnet')"
+    
+On OS X, you may need to install `coreutils` and `gnu-sed` for the script `download_data.sh` to run correctly. These can be installed using brew:
+
+    brew install coreutils gnu-sed
+
+After installation, you will either need to modify `download_data.sh` to run `gsort` and `gsed` instead of `sort` and `sed`, or alternatively add a "gnubin" directory to your PATH from your bashrc:
+
+    PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+For more information, see `brew info coreutils` or `brew info gnu-sed`.
 
 ## Evaluating your own model
 
