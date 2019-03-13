@@ -128,7 +128,7 @@ function download_wbless () {
 function download_eval () {
     echo -e 'word1\tword2\tlabel\trelation\tfold'
     curl $CURL_OPTIONS "$VERED_REPO_URL/EVALution.val" "$VERED_REPO_URL/EVALution.test" | \
-        sed 's/-[jvn]\t/\t/g' | sort | uniq | \
+        sort | uniq | sed 's/-[jvn]\t/\t/g' | \
         deterministic_shuffle | \
         awk '{if (NR < 737) {print $0 "\tval"} else {print $0 "\ttest"}}'
 }
@@ -154,7 +154,7 @@ fi
 if [ ! -x "$(command -v openssl)" ]
 then
     warning "This script requires the 'openssl' tool. Please run"
-    warning "  brew install openssl"
+    warning "  brew install unrar"
     warning "or whatever your system's equivalent is."
     exit 1
 fi
