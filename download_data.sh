@@ -22,7 +22,7 @@ OMER_URL="http://u.cs.biu.ac.il/~nlp/wp-content/uploads/lexical_inference.zip"
 SHWARTZ_URL="https://raw.githubusercontent.com/vered1986/HypeNET/v2/dataset/datasets.rar"
 VERED_REPO_URL="https://raw.githubusercontent.com/vered1986/UnsupervisedHypernymy/e3b22709365c7b3042126e5887c9baa03631354e/datasets"
 KIMANH_REPO_URL="https://raw.githubusercontent.com/nguyenkh/HyperVec/bd2cb15a6be2a4726ffbf9c0d7e742144790dee3/datasets_classification"
-HYPERLEX_URL="http://people.ds.cam.ac.uk/iv250/paper/hyperlex/hyperlex-data.zip"
+HYPERLEX_URL="https://github.com/ivulic/hyperlex/raw/master/hyperlex-data.zip"
 
 function warning () {
     echo "$1" >&2
