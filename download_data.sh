@@ -134,12 +134,15 @@ function download_eval () {
 }
 
 
+# Let the user specify output directory, default to `data`
+# Ex: `HYPERNYMY_DATA_OUTPUT=.my_data_dir bash download_data.sh`
+if [ -z $HYPERNYMY_DATA_OUTPUT ]; then
+  HYPERNYMY_DATA_OUTPUT="data"
+fi
 
-OUTPUT="data"
-
-if [ -d "$OUTPUT" ]
+if [ -d "$HYPERNYMY_DATA_OUTPUT" ]
 then
-    echo "Warning: Already found the data. Please run 'rm -rf $OUTPUT'" >&2
+    echo "Warning: Already found the data. Please run 'rm -rf $HYPERNYMY_DATA_OUTPUT'" >&2
     exit 1
 fi
 
@@ -162,28 +165,28 @@ fi
 
 
 # prep the output folder
-mkdir -p "$OUTPUT"
+mkdir -p "$HYPERNYMY_DATA_OUTPUT"
 
 
 warning "[1/7] Downloading BLESS"
-download_bless > "$OUTPUT/bless.tsv"
+download_bless > "$HYPERNYMY_DATA_OUTPUT/bless.tsv"
 
 warning "[2/7] Downloading LEDS"
-download_leds > "$OUTPUT/leds.tsv"
+download_leds > "$HYPERNYMY_DATA_OUTPUT/leds.tsv"
 
 warning "[3/7] Downloading EVAL"
-download_eval > "$OUTPUT/eval.tsv"
+download_eval > "$HYPERNYMY_DATA_OUTPUT/eval.tsv"
 
 warning "[4/7] Downloading Shwartz"
-download_shwartz > "$OUTPUT/shwartz.tsv"
+download_shwartz > "$HYPERNYMY_DATA_OUTPUT/shwartz.tsv"
 
 warning "[5/7] Downloading Hyperlex"
-download_hyperlex > "$OUTPUT/hyperlex_rnd.tsv"
+download_hyperlex > "$HYPERNYMY_DATA_OUTPUT/hyperlex_rnd.tsv"
 
 warning "[6/7] Downloading WBLESS"
-download_wbless > "$OUTPUT/wbless.tsv"
+download_wbless > "$HYPERNYMY_DATA_OUTPUT/wbless.tsv"
 
 warning "[7/7] Downloading BiBLESS"
-download_bibless > "$OUTPUT/bibless.tsv"
+download_bibless > "$HYPERNYMY_DATA_OUTPUT/bibless.tsv"
 
 warning "All done."
