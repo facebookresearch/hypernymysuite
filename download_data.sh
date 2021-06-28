@@ -22,7 +22,7 @@ OMER_URL="http://u.cs.biu.ac.il/~nlp/wp-content/uploads/lexical_inference.zip"
 SHWARTZ_URL="https://raw.githubusercontent.com/vered1986/HypeNET/v2/dataset/datasets.rar"
 VERED_REPO_URL="https://raw.githubusercontent.com/vered1986/UnsupervisedHypernymy/e3b22709365c7b3042126e5887c9baa03631354e/datasets"
 KIMANH_REPO_URL="https://raw.githubusercontent.com/nguyenkh/HyperVec/bd2cb15a6be2a4726ffbf9c0d7e742144790dee3/datasets_classification"
-HYPERLEX_URL="http://people.ds.cam.ac.uk/iv250/paper/hyperlex/hyperlex-data.zip"
+HYPERLEX_URL="https://raw.githubusercontent.com/ivulic/hyperlex/master/hyperlex-data.zip"
 
 function warning () {
     echo "$1" >&2
@@ -134,15 +134,19 @@ function download_eval () {
 }
 
 
+# Let the user specify output directory, default to `data`
+# Ex: `HYPERNYMY_DATA_OUTPUT=.my_data_dir bash download_data.sh`
+if [ -z $HYPERNYMY_DATA_OUTPUT ]; then
+  HYPERNYMY_DATA_OUTPUT="data"
+fi
 
-OUTPUT="data"
 
 echo "The data has been checked into script and you no longer need to run this. It is left for posterity."
 exit
 
-if [ -d "$OUTPUT" ]
+if [ -d "$HYPERNYMY_DATA_OUTPUT" ]
 then
-    echo "Warning: Already found the data. Please run 'rm -rf $OUTPUT'" >&2
+    echo "Warning: Already found the data. Please run 'rm -rf $HYPERNYMY_DATA_OUTPUT'" >&2
     exit 1
 fi
 
@@ -165,28 +169,28 @@ fi
 
 
 # prep the output folder
-mkdir -p "$OUTPUT"
+mkdir -p "$HYPERNYMY_DATA_OUTPUT"
 
 
 warning "[1/7] Downloading BLESS"
-download_bless > "$OUTPUT/bless.tsv"
+download_bless > "$HYPERNYMY_DATA_OUTPUT/bless.tsv"
 
 warning "[2/7] Downloading LEDS"
-download_leds > "$OUTPUT/leds.tsv"
+download_leds > "$HYPERNYMY_DATA_OUTPUT/leds.tsv"
 
 warning "[3/7] Downloading EVAL"
-download_eval > "$OUTPUT/eval.tsv"
+download_eval > "$HYPERNYMY_DATA_OUTPUT/eval.tsv"
 
 warning "[4/7] Downloading Shwartz"
-download_shwartz > "$OUTPUT/shwartz.tsv"
+download_shwartz > "$HYPERNYMY_DATA_OUTPUT/shwartz.tsv"
 
 warning "[5/7] Downloading Hyperlex"
-download_hyperlex > "$OUTPUT/hyperlex_rnd.tsv"
+download_hyperlex > "$HYPERNYMY_DATA_OUTPUT/hyperlex_rnd.tsv"
 
 warning "[6/7] Downloading WBLESS"
-download_wbless > "$OUTPUT/wbless.tsv"
+download_wbless > "$HYPERNYMY_DATA_OUTPUT/wbless.tsv"
 
 warning "[7/7] Downloading BiBLESS"
-download_bibless > "$OUTPUT/bibless.tsv"
+download_bibless > "$HYPERNYMY_DATA_OUTPUT/bibless.tsv"
 
 warning "All done."

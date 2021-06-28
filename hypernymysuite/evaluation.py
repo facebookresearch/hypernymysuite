@@ -11,6 +11,7 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import os
 import numpy as np
 import scipy.stats
 from sklearn.metrics import average_precision_score, precision_recall_curve
@@ -23,15 +24,17 @@ from nltk.stem.wordnet import WordNetLemmatizer
 # Lemmatizer we need for the model
 lemmatizer = WordNetLemmatizer()
 
+DATA_DIR = os.environ.get('HYPERNYMY_DATA_DIR', 'data')
+
 # Datasets!
-CORRELATION_EVAL_DATASETS = [("hyperlex", "data/hyperlex_rnd.tsv")]
+CORRELATION_EVAL_DATASETS = [("hyperlex", os.path.join(DATA_DIR, "hyperlex_rnd.tsv"))]
 
 SIEGE_EVALUATIONS = [
-    ("bless", "data/bless.tsv"),
-    ("leds", "data/leds.tsv"),
-    ("eval", "data/eval.tsv"),
-    ("weeds", "data/wbless.tsv"),
-    ("shwartz", "data/shwartz.tsv"),
+    ("bless", os.path.join(DATA_DIR, "bless.tsv")),
+    ("leds", os.path.join(DATA_DIR, "leds.tsv")),
+    ("eval", os.path.join(DATA_DIR, "eval.tsv")),
+    ("weeds", os.path.join(DATA_DIR, "wbless.tsv")),
+    ("shwartz", os.path.join(DATA_DIR, "shwartz.tsv")),
 ]
 
 
@@ -171,7 +174,7 @@ def bless_directionality_setup(model):
     Asks a model whether (x, y) > (y, x) for a number of positive hypernymy examples.
     """
     # load up the data
-    ds = Dataset("data/bless.tsv", model.vocab)
+    ds = Dataset(os.path.join(DATA_DIR, "bless.tsv"), model.vocab)
 
     # only keep the positive pairs
     hypos = ds.hypos[ds.y]
@@ -211,7 +214,7 @@ def wbless_setup(model):
     """
     Accuracy using a threshold, with a dataset that explicitly contains reverse pairs.
     """
-    ds = Dataset("data/wbless.tsv", model.vocab)
+    ds = Dataset(os.path.join(DATA_DIR, "wbless.tsv"), model.vocab)
 
     # Ensure we always get the same results
     rng = np.random.RandomState(42)
@@ -250,7 +253,7 @@ def bibless_setup(model):
     """
     Combined detection with a threshold, plus direction prediction.
     """
-    ds = Dataset("data/bibless.tsv", model.vocab)
+    ds = Dataset(os.path.join(DATA_DIR, "bibless.tsv"), model.vocab)
 
     # Ensure we always get the same results
     rng = np.random.RandomState(42)

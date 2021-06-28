@@ -41,6 +41,16 @@ using pip:
 If you've never used `nltk` before, you'll need to install the wordnet module.
 
     python -c "import nltk; nltk.download('wordnet')"
+    
+On OS X, you may need to install `coreutils` and `gnu-sed` for the script `download_data.sh` to run correctly. These can be installed using brew:
+
+    brew install coreutils gnu-sed
+
+After installation, you will either need to modify `download_data.sh` to run `gsort` and `gsed` instead of `sort` and `sed`, or alternatively add a "gnubin" directory to your PATH from your bashrc:
+
+    PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+For more information, see `brew info coreutils` or `brew info gnu-sed`.
 
 ## Evaluating your own model
 
@@ -73,6 +83,6 @@ If you find this code useful for your research, please cite the following paper:
 
 This code is licensed under [CC-BY-NC4.0](https://creativecommons.org/licenses/by-nc/4.0/).
 
-The data contained in `hearst_patterns.txt` was extracted from a combination of
+The data contained in `hearst_counts.txt` was extracted from a combination of
 [Wikipedia](https://en.wikipedia.org/wiki/Wikipedia:Database_download) and Gigaword.
 Please see publication for details.
