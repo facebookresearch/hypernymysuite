@@ -137,6 +137,9 @@ function download_eval () {
 
 OUTPUT="data"
 
+echo "The data has been checked into script and you no longer need to run this. It is left for posterity."
+exit
+
 if [ -d "$OUTPUT" ]
 then
     echo "Warning: Already found the data. Please run 'rm -rf $OUTPUT'" >&2
