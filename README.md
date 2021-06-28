@@ -11,10 +11,6 @@ We hope that open sourcing our evaluation will help facilitate future research.
 
 ## Example
 
-Before you begin, you should run the script to download the evaluation datasets.
-
-    bash download_data.sh
-
 You can produce results in a JSON format by calling main.py:
 
     python main.py cnt --dset hearst_counts.txt.gz

@@ -140,6 +140,10 @@ if [ -z $HYPERNYMY_DATA_OUTPUT ]; then
   HYPERNYMY_DATA_OUTPUT="data"
 fi
 
+
+echo "The data has been checked into script and you no longer need to run this. It is left for posterity."
+exit
+
 if [ -d "$HYPERNYMY_DATA_OUTPUT" ]
 then
     echo "Warning: Already found the data. Please run 'rm -rf $HYPERNYMY_DATA_OUTPUT'" >&2
